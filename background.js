@@ -1,5 +1,3 @@
-// forked from haranicle's "forked: EaselJS 0.8.0 and Box2D: Falling Balls" http://jsdo.it/haranicle/OhVD
-// forked from FumioNonaka's "EaselJS 0.8.0 and Box2D: Falling Balls" http://jsdo.it/FumioNonaka/tNWns
 var box2d = {
 	b2Vec2:Box2D.Common.Math.b2Vec2,
 	b2World:Box2D.Dynamics.b2World,
