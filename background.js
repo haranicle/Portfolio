@@ -1,3 +1,19 @@
+$(function () {
+    sizing();
+    Draw();
+    $(window).resize(function() {
+        sizing();
+        Draw();
+    });
+});
+function sizing(){
+    $('#cnvs').attr({height:$('#wrapper').height()});
+    $('#cnvs').attr({width:$('#wrapper').width()});
+};
+function Draw() {   
+    initialize();
+};
+
 var box2d = {
 	b2Vec2:Box2D.Common.Math.b2Vec2,
 	b2World:Box2D.Dynamics.b2World,
@@ -19,15 +35,13 @@ var stageHeight;
 var bottomLimit;
 var ballImage;
 var imageRadius;
-var standardRadius = 50;
+var standardRadius = 300;
 var floor = new createjs.Rectangle();
 var duration = 0;
-var interval = 1000;
+var interval = 500;
 var balls = [];
 function initialize() {
-	var canvasElement = document.getElementById("myCanvas");
-    canvasElement.width  = 480;
-    canvasElement.height = 320;
+	var canvasElement = document.getElementById("cnvs");
 	var gravity = new box2d.b2Vec2(0, gravityVertical);
 	stage = new createjs.Stage(canvasElement);
 	stageWidth = canvasElement.width;
@@ -36,11 +50,11 @@ function initialize() {
 	floor.x = 0;
 	initializeBox2D(gravity, stageWidth, stageHeight);
 	createjs.Ticker.timingMode = createjs.Ticker.RAF;
-	preloadImage("http://jsrun.it/assets/S/f/B/y/SfByz.png");
+	preloadImage("http://jsrun.it/assets/4/X/z/s/4Xzsd.png");
 }
 function initializeBox2D(gravity, stageWidth, stageHeight) {
 	world = new box2d.b2World(gravity, true);
-	var floorShape = createStaticFloor(stageWidth / 2, stageHeight - standardRadius, floor.width, standardRadius, "#CCCCCC");
+	var floorShape = createStaticFloor(stageWidth / 2, stageHeight, floor.width, 10, "#ffffff");
 	stage.addChild(floorShape);
 }
 function tick(eventObject) {
@@ -53,7 +67,7 @@ function addBall(delta) {
 	duration += delta;
 	if (duration > interval) {
 		var nX = floor.width * Math.random() + floor.x;
-		var nY = -stageHeight * Math.random();
+		var nY = -stageHeight
 		var radius = standardRadius;
 		var ball = getDynamicBall(nX, nY, radius);
         
@@ -169,4 +183,3 @@ function loadFinished(eventObject) {
 	bottomLimit = stageHeight + ballImage.height;
 	createjs.Ticker.addEventListener("tick", tick);
 }
-initialize();
