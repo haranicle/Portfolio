@@ -1,3 +1,3 @@
-# Potrfolio
+# Portfolio
 
-[haranicle](http://haranicle.net/ "haranicle")
+[haranicle Portfolio](http://haranicle.net/ "haranicle")
